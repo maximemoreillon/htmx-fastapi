@@ -11,9 +11,15 @@
     ></script>
   </head>
   <body>
-    <h1>HTMX + FastAPI</h1>
+    <h1>Fruits</h1>
     <p>
-      <a href="/fruits">Fruits</a>
+      <a href="/fruits/new">Add a fruit</a>
     </p>
+    <ul>
+      <!-- PROBLEM: not the same as fruit.html -->
+      {% for fruit in fruits %}
+      <li>{{ fruit.name }}</li>
+      {% endfor %}
+    </ul>
   </body>
 </html>
