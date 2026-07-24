@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Request, Form, HTTPException
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from db import SessionDep, Fruit, create_db_and_tables
@@ -6,8 +6,6 @@ from sqlmodel import select
 from typing import Annotated
 
 app = FastAPI()
-
-# app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 
@@ -37,11 +35,6 @@ async def read_fruits(request: Request, session: SessionDep):
     )
 
 
-@app.get("/fruits/new", response_class=HTMLResponse)
-async def fruit_form(request: Request):
-    return templates.TemplateResponse(request=request, name="fruits/new/index.html")
-
-
 @app.get("/fruits/{id}", response_class=HTMLResponse)
 async def read_fruit(request: Request, id: str):
     return templates.TemplateResponse(
@@ -50,8 +43,12 @@ async def read_fruit(request: Request, id: str):
 
 
 @app.delete("/fruits/{id}", response_class=HTMLResponse)
-async def delete_fruit(request: Request, id: str):
-    # TODO: actually delete
+async def delete_fruit(request: Request, session: SessionDep, id: int):
+    fruit = session.get(Fruit, id)
+    if not fruit:
+        raise HTTPException(status_code=404, detail="Hero not found")
+    session.delete(fruit)
+    session.commit()
     return ""
 
 
