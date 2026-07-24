@@ -3,10 +3,7 @@
 <p>
   <a href="/fruits/new">Add a fruit</a>
 </p>
-<ul>
-  <!-- PROBLEM: not the same as fruit.html -->
-  {% for fruit in fruits %}
-  <li>{{ fruit.name }}</li>
-  {% endfor %}
-</ul>
+<div>
+  {% for fruit in fruits %} {% include 'partials/fruit.html' %} {% endfor %}
+</div>
 {% endblock %}
