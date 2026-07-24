@@ -8,4 +8,14 @@
 >
   <h3>{{fruit.name}}</h3>
   <p>Quantity: {{fruit.description}}</p>
+  <p>
+    <button
+      hx-delete="/fruits/{{fruit.id}}"
+      hx-target="closest div"
+      hx-swap="outerHTML"
+      hx-confirm="Are you sure you want to delete this fruit?"
+    >
+      Delete {{fruit.id}}
+    </button>
+  </p>
 </div>

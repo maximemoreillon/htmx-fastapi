@@ -1,9 +1,22 @@
 {% extends 'layout.html' %} {% block content %}
 <h2>Fruits</h2>
-<p>
-  <a href="/fruits/new">Add a fruit</a>
-</p>
-<div>
+<h3>Existing fruits</h3>
+
+<div id="fruits">
   {% for fruit in fruits %} {% include 'partials/fruit.html' %} {% endfor %}
 </div>
+<h3>New fruit</h3>
+<form hx-post="/fruits" hx-target="#fruits" hx-swap="beforeend">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" />
+  </div>
+  <div>
+    <label for="name">Description</label>
+    <input type="text" name="description" id="description" />
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
 {% endblock %}
