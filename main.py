@@ -35,13 +35,6 @@ async def read_fruits(request: Request, session: SessionDep):
     )
 
 
-@app.get("/fruits/{id}", response_class=HTMLResponse)
-async def read_fruit(request: Request, id: str):
-    return templates.TemplateResponse(
-        request=request, name="item.html", context={"id": id}
-    )
-
-
 @app.delete("/fruits/{id}", response_class=HTMLResponse)
 async def delete_fruit(request: Request, session: SessionDep, id: int):
     fruit = session.get(Fruit, id)
