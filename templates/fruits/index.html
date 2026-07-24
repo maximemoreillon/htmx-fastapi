@@ -2,7 +2,7 @@
 <h2>Fruits</h2>
 <h3>Existing fruits</h3>
 
-<div id="fruits">
+<div id="fruits" style="display: flex; flex-direction: column; gap: 0.5em">
   {% for fruit in fruits %} {% include 'partials/fruit.html' %} {% endfor %}
 </div>
 <h3>New fruit</h3>

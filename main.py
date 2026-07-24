@@ -36,7 +36,7 @@ async def read_fruits(request: Request, session: SessionDep):
 
 
 @app.delete("/fruits/{id}", response_class=HTMLResponse)
-async def delete_fruit(request: Request, session: SessionDep, id: int):
+async def delete_fruit(session: SessionDep, id: int):
     fruit = session.get(Fruit, id)
     if not fruit:
         raise HTTPException(status_code=404, detail="Hero not found")

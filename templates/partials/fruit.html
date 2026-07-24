@@ -1,13 +1,6 @@
-<div
-  style="
-    border: 1px solid black;
-    margin: 0.25em;
-    padding: 0.25em;
-    border-radius: 0.5em;
-  "
->
+<div style="border: 1px solid black; padding: 0.25em; border-radius: 0.5em">
   <h3>{{fruit.name}}</h3>
-  <p>Quantity: {{fruit.description}}</p>
+  <p>{{fruit.description}}</p>
   <p>
     <button
       hx-delete="/fruits/{{fruit.id}}"
@@ -15,7 +8,7 @@
       hx-swap="outerHTML"
       hx-confirm="Are you sure you want to delete this fruit?"
     >
-      Delete {{fruit.id}}
+      Delete
     </button>
   </p>
 </div>
