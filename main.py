@@ -1,12 +1,13 @@
 from fastapi import FastAPI, Request, Form, HTTPException
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from db import SessionDep, Fruit, create_db_and_tables
 from sqlmodel import select
 from typing import Annotated
 
 app = FastAPI()
-
+app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 
