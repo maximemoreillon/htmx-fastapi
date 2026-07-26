@@ -1,22 +1,39 @@
 {% extends 'layout.html' %} {% block content %}
-<h2>Fruits</h2>
-<h3>Existing fruits</h3>
+<h2 class="text-2xl my-2">Fruits</h2>
+<h3 class="text-xl my-2">Existing fruits</h3>
 
-<div id="fruits" style="display: flex; flex-direction: column; gap: 0.5em">
+<div id="fruits" class="grid grid-cols-4 gap-2">
   {% for fruit in fruits %} {% include 'partials/fruit.html' %} {% endfor %}
 </div>
-<h3>New fruit</h3>
-<form hx-post="/fruits" hx-target="#fruits" hx-swap="beforeend">
+
+<h3 class="text-xl my-2">New fruit</h3>
+<form
+  hx-post="/fruits"
+  hx-target="#fruits"
+  hx-swap="beforeend"
+  class="grid gap-x-4 gap-y-2 grid-cols-[auto_1fr]"
+>
+  <label for="name">Name</label>
+  <input
+    type="text"
+    name="name"
+    id="name"
+    class="border rounded px-1 py-px"
+    placeholder="Banana"
+  />
+
+  <label for="name">Description</label>
+  <input
+    type="text"
+    name="description"
+    id="description"
+    class="border rounded px-1 py-px"
+    placeholder="An ellongated yellow fruit"
+  />
   <div>
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" />
-  </div>
-  <div>
-    <label for="name">Description</label>
-    <input type="text" name="description" id="description" />
-  </div>
-  <div>
-    <button type="submit">Submit</button>
+    <button type="submit" class="border rounded px-2 py-px cursor-pointer">
+      Submit
+    </button>
   </div>
 </form>
 {% endblock %}
