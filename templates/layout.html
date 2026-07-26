@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="static/output.css" />
   </head>
   <body>
-    <h1 class="text-3xl">HTMX + FastAPI</h1>
-    <main>{% block content %}{% endblock %}</main>
+    <main class="max-w-3xl mx-auto">
+      <h1 class="text-3xl my-2">HTMX + FastAPI</h1>
+      {% block content %}{% endblock %}
+    </main>
   </body>
 </html>
